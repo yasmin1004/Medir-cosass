@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Arquitectura | Conversor Métrico</title>
+    <style>
+        /* Estética Minimalista Escandinava */
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #707070;
+            --border-color: #e0e0e0;
+            --accent-color: #2b2b2b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px dashed var(--border-color);
+            margin: 20px 0;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            border: none;
+            border-bottom: 1px solid var(--accent-color);
+            background: transparent;
+            outline: none;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        .info-box {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .result-box {
+            background: #f1f3f5;
+            padding: 20px;
+            border-left: 2px solid var(--accent-color);
+            margin-top: 20px;
+        }
+
+        .result-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .result-value {
+            font-size: 28px;
+            font-weight: 400;
+            margin-top: 5px;
+            font-family: monospace;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>📐 Estudio de Arquitectura</h1>
+            <p class="subtitle">Conversor Métrico de Precisión</p>
+        </header>
+
+        <hr class="divider">
+
+        <div class="info-box">
+            • Factor de conversión: 4.99 u = 1.00 m
+        </div>
+
+        <div class="input-group">
+            <label for="dibujoInput">Medida del Dibujo (u)</label>
+            <input type="number" id="dibujoInput" placeholder="0.00" step="any" oninput="calcularMetros()">
+        </div>
+
+        <div class="result-box">
+            <div class="result-label">>> Total Metros Reales</div>
+            <div class="result-value" id="resultado">0.00 <span style="font-size: 16px;">m</span></div>
+        </div>
+
+        <hr class="divider">
+
+        <footer>
+            Cálculo de equivalencia automatizado.
+        </footer>
+    </div>
+
+    <script>
+        function calcularMetros() {
+            const input = document.getElementById('dibujoInput').value;
+            const resultadoDiv = document.getElementById('resultado');
+            
+            if (input && input > 0) {
+                // Hacemos la división por 4.99
+                const metrosReales = parseFloat(input) / 4.99;
+                // Mostramos el resultado redondeado a 2 decimales
+                resultadoDiv.innerHTML = `${metrosReales.toFixed(2)} <span style="font-size: 16px;">m</span>`;
+            } else {
+                resultadoDiv.innerHTML = `0.00 <span style="font-size: 16px;">m</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
