@@ -136,7 +136,7 @@
         <hr class="divider">
 
         <div class="info-box">
-            • Factor de conversión: 4.99 u = 1.00 m
+            • Factor de conversión: 0.35 u = 1.00 m
         </div>
 
         <div class="input-group">
@@ -163,7 +163,7 @@
             
             if (input && input > 0) {
                 // Hacemos la división por 4.99
-                const metrosReales = parseFloat(input) / 4.99;
+                const metrosReales = parseFloat(input) / 0,35;
                 // Mostramos el resultado redondeado a 2 decimales
                 resultadoDiv.innerHTML = `${metrosReales.toFixed(2)} <span style="font-size: 16px;">m</span>`;
             } else {
